@@ -8,6 +8,9 @@
     "jest-playwright-preset": "^1.5.1",
     "playwright": "^1.9.2"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "jest": {
     "preset": "jest-playwright-preset"
   }
