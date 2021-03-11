@@ -60,6 +60,6 @@ describe('form authentication', () => {
 test('Disappearing Elements', async () => {
     await page.click('ul > li > a[href = "/disappearing_elements"]');
     const elements = await page.$$('div.example > ul > li ');
-    expect(elements).toHaveLength(5);   
-     await page.waitForTimeout(3000);
+    expect(elements).toHaveLength(5);
+    await page.waitForTimeout(3000);
 })
