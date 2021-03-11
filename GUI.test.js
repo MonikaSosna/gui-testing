@@ -1,7 +1,7 @@
 beforeEach(async () => {
     await page.goto('http://the-internet.herokuapp.com/');
 })
-test.skip('checkboxes', async () => {
+test('checkboxes', async () => {
     await page.click("ul > li > a:has-text('Checkboxes')");
     const firstCheckbox = await page.waitForSelector('#checkboxes > input:first-child');
     const ifFirstChecked = await firstCheckbox.isChecked();
@@ -11,7 +11,7 @@ test.skip('checkboxes', async () => {
     expect(ifSecondChecked).toBeFalsy();
     await page.waitForTimeout(3000);
 })
-test.skip('dropdown', async () => {
+test('dropdown', async () => {
     await page.click("ul > li > a:has-text('Dropdown')");
     await page.selectOption("select#dropdown", "1");
     const hasAttribute = await page.$eval('option[value="1"]', el => el.hasAttribute('selected'));
@@ -19,7 +19,7 @@ test.skip('dropdown', async () => {
     await page.waitForTimeout(3000);
 })
 
-describe.skip('form authentication', () => {
+describe('form authentication', () => {
     beforeEach(async () => {
         await page.click('ul > li > a[href = "/login"]');
     })
@@ -56,6 +56,10 @@ describe.skip('form authentication', () => {
         const info = await page.innerText('div#flash');
         await expect(info).toContain('You logged into a secure area!');
     })
-
 })
-
+test('Disappearing Elements', async () => {
+    await page.click('ul > li > a[href = "/disappearing_elements"]');
+    const elements = await page.$$('div.example > ul > li ');
+    expect(elements).toHaveLength(5);   
+     await page.waitForTimeout(3000);
+})
